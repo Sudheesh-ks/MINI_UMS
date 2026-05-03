@@ -1,0 +1,83 @@
+# =========================
+# Node modules
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Build folders
+# =========================
+dist/
+build/
+coverage/
+
+# =========================
+# Logs
+# =========================
+logs
+*.log
+
+# =========================
+# OS generated files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE / Editor folders
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# React frontend
+# =========================
+client/node_modules/
+client/build/
+client/.env
+
+# =========================
+# Express backend
+# =========================
+server/node_modules/
+server/uploads/
+server/.env
+
+# =========================
+# Database files
+# =========================
+*.sqlite
+*.sqlite3
+*.db
+
+# =========================
+# Cache files
+# =========================
+.cache/
+.parcel-cache/
+
+# =========================
+# Optional package locks
+# (Keep the one you use)
+# =========================
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# =========================
+# Misc
+# =========================
+tmp/
+temp/
