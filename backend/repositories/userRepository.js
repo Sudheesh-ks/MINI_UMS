@@ -1,6 +1,6 @@
 import userModel from "../models/userModel.js";
 
-export class AuthRepository {
+export class UserRepository {
     constructor() { }
 
     async createUser(userData){
@@ -9,5 +9,9 @@ export class AuthRepository {
 
     async findByEmail(email){
         return await userModel.findOne({ email });
+    }
+
+    async getAllUsers(){
+        return await userModel.find().sort({ createdAt: -1 });
     }
 }

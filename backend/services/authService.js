@@ -3,8 +3,8 @@ import bcrypt from 'bcrypt';
 import { generateToken } from "../utils/jwt.js";
 
 export class AuthService {
-    constructor(authRepository){
-        this._authRepository = authRepository;
+    constructor(userRepository){
+        this._userRepository = userRepository;
     }
 
     async register({username,email,password,role}){
@@ -13,7 +13,7 @@ export class AuthService {
             throw new Error(HttpResponse.FIELDS_REQUIRED)
         }
 
-        const existingUser = await this._authRepository.findByEmail(email);
+        const existingUser = await this._userRepository.findByEmail(email);
         if(existingUser){
             throw new Error(HttpResponse.EMAIL_ALREADY_EXISTS);
         }
@@ -29,7 +29,7 @@ export class AuthService {
             userData.role = role;
         }
         
-        return await this._authRepository.createUser(userData);
+        return await this._userRepository.createUser(userData);
     }
 
     async login({email,password}){
@@ -37,7 +37,7 @@ export class AuthService {
             throw new Error(HttpResponse.FIELDS_REQUIRED);
         }
 
-        const user = await this._authRepository.findByEmail(email);
+        const user = await this._userRepository.findByEmail(email);
         if(!user) throw new Error(HttpResponse.INVALID_CREDENTIALS);
 
         const isMatch = await bcrypt.compare(password, user.password);
