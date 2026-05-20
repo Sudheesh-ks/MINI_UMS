@@ -1,6 +1,7 @@
 import { Routes } from 'react-router-dom'
 import './App.css'
 import userRoutes from './routes/userRoutes'
+import { adminRoutes } from './routes/adminRoutes'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <Routes>
         {userRoutes()}
+        {adminRoutes()}
       </Routes>
     </>
   )

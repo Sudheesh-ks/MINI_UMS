@@ -8,9 +8,9 @@ export class AuthController {
 
     async userRegister(req,res){
         try {
-            const {username,email,password} = req.body;
+            const {username,email,password,role} = req.body;
 
-            const user = await this._authService.register({username,email,password});
+            const user = await this._authService.register({username,email,password,role});
             return res.status(HttpStatus.CREATED).json({ success: true, message: HttpResponse.REGISTRATION_SUCCESSFUL, data: user });
         } catch (error) {
             return res.status(HttpStatus.BAD_REQUEST).json({ success: false, message: HttpResponse.BAD_REQUEST });

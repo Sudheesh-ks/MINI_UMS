@@ -13,9 +13,16 @@ const LoginPage = () => {
       const res = await loginUserAPI(email,password);
       if(res.data.success){
         alert("Login Successful");
-        localStorage.setItem("usertoken",res.data.data.token);
-        navigate('/home');
-      }else{
+        const { token, user } = res.data.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        if (user?.role === 'admin') {
+          navigate('/admin/dashboard');
+        } else {
+          navigate('/home');
+        }
+      } else {
         alert("Login failed! Please try again.");
       }
     } catch (error) {

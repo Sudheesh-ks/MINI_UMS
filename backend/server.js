@@ -3,6 +3,7 @@ import cors from 'cors';
 import { connectDB } from './config/mongodb.js';
 import dotenv from 'dotenv';
 import userRouter from './routes/authRoutes.js';
+import adminRouter from './routes/adminRoutes.js';
 dotenv.config()
 
 const app = express();
@@ -24,6 +25,7 @@ app.get('/', (req,res) => {
 })
 
 app.use('/api/user', userRouter);
+app.use('/api/admin', adminRouter);
 
 
 app.listen(PORT, () => {

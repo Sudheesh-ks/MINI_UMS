@@ -7,7 +7,7 @@ export class AuthService {
         this._authRepository = authRepository;
     }
 
-    async register({username,email,password}){
+    async register({username,email,password,role}){
 
         if(!username || !email || !password){
             throw new Error(HttpResponse.FIELDS_REQUIRED)
@@ -24,6 +24,11 @@ export class AuthService {
             email,
             password: hashedPassword
         }
+
+        if(role){
+            userData.role = role;
+        }
+        
         return await this._authRepository.createUser(userData);
     }
 
@@ -40,7 +45,8 @@ export class AuthService {
 
         const token = generateToken({
             id: user._id,
-            email: user.email
+            email: user.email,
+            role: user.role
         });
 
         return {
@@ -48,7 +54,8 @@ export class AuthService {
             user: {
                 _id: user._id,
                 username: user.username,
-                email: user.email
+                email: user.email,
+                role: user.role
             }
         };
     }

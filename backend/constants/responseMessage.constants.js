@@ -16,4 +16,5 @@ export const HttpResponse = {
     LOGIN_SUCCESSFUL: "Login Successful",
     INVALID_CREDENTIALS: "Invalid Credentials",
     INCORRECT_PASSWORD: "Incorrect Password",
+    INVALID_ROLE: 'Access denied. Insufficient permissions'
 }
